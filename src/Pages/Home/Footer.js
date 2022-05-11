@@ -6,7 +6,7 @@ const Footer = () => {
     const year = today.getFullYear();
     return (
         <div>
-            <footer style={{ background: `url(${footer})`, backgroundSize: 'cover' }} class="footer p-10 sm:grid-cols-2  ">
+            <footer style={{ background: `url(${footer})`, backgroundSize: 'cover' }} class="footer p-10 sm:grid-cols-2 ">
                 <div>
                     <span class="footer-title">Services</span>
                     <a class="link link-hover">Branding</a>
