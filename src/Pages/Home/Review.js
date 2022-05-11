@@ -7,11 +7,20 @@ const Review = ({ review }) => {
                 <div class="card-body">
                     <h2 class="card-title text-primary">Client Reviews</h2>
                     <p className='my-2'>{review.review}</p>
+
+                    <div class="rating mb-2">
+                        <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" />
+                        <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" checked />
+                        <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" checked />
+                        <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" checked/>
+                        <input type="radio" name="rating-2" class="mask mask-star-2 bg-orange-400" />
+                    </div>
+
                     <div class="flex items-center">
 
                         <div class="avatar">
                             <div class="w-16 rounded-full ring ring-primary ring-offset-base-100 mr-4">
-                                <img src={review.img} alt=""/>
+                                <img src={review.img} alt="" />
                             </div>
                         </div>
                         <div>
