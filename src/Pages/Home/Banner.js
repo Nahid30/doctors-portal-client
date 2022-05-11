@@ -1,9 +1,11 @@
 import React from 'react';
 import chair from '../../assets/images/chair.png';
+import bg from '../../assets/images/bg.png';
+import PrimaryButton from '../Shared/PrimaryButton';
 
 const Banner = () => {
     return (
-        <div>
+        <section style={{background:`url(${bg})`}}>
            
             <div class="hero min-h-screen">
                 <div class="hero-content flex-col lg:flex-row-reverse ">
@@ -11,11 +13,11 @@ const Banner = () => {
                     <div>
                         <h1 class="text-5xl font-bold ">Your New <span className='text-primary'>Smile</span> Starts Here!</h1>
                         <p class="py-6">We are always ready to give you a better service. So don't be late to checkup your dentist if you have problem in your teeth. Just click the button below to see your Doctor!</p>
-                        <button class="btn btn-primary  text-white uppercase font-bold bg-gradient-to-r from-secondary to-primary">Get Started</button>
+                        <PrimaryButton>Get Started</PrimaryButton>
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
     );
 };
 
