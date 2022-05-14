@@ -3,7 +3,7 @@ import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-fireba
 import auth from '../../firebase.init';
 import { useForm } from "react-hook-form";
 import Loading from '../Shared/Loading';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import google from '../../assets/images/google.png';
 
 const Login = () => {
@@ -20,6 +20,9 @@ const Login = () => {
 
     const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
 
+    let navigate = useNavigate();
+    let location = useLocation();
+    let from = location.state?.from?.pathname || "/";
 
     let signInError;
 
@@ -32,7 +35,7 @@ const Login = () => {
     }
 
     if (user || gUser) {
-        console.log(user || gUser);
+        navigate(from, { replace: true });
     }
 
 
@@ -120,7 +123,7 @@ const Login = () => {
                     <div className="divider">OR</div>
 
                     <button
-                        
+
                         onClick={() => signInWithGoogle()}
                         className="btn btn-outline">Continue With Google
                     </button>
