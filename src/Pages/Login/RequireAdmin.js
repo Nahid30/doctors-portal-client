@@ -7,8 +7,8 @@ import Loading from '../Shared/Loading';
 import { signOut } from 'firebase/auth';
 
 
-const RequireAdmin = ({ children }) => {
-    const [user, loading, error] = useAuthState(auth);
+const RequireAdmin = ({ children }) => { 
+    const [user, loading] = useAuthState(auth);
     const [admin, adminLoading] = useAdmin(user)
     const location = useLocation();
     if (loading || adminLoading) {

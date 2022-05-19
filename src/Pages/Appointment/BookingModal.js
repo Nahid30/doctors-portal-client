@@ -14,8 +14,6 @@ const BookingModal = ({ date, treatment, setTreatment, refetch }) => {
     const handleBooking = event => {
         event.preventDefault();
         const slot = event.target.slot.value;
-        console.log(slot, name, _id)
-
 
         const booking = {
             treatmentId: _id,
@@ -27,7 +25,7 @@ const BookingModal = ({ date, treatment, setTreatment, refetch }) => {
 
         }
 
-        fetch('http://localhost:5000/booking', {
+        fetch('https://desolate-fjord-03129.herokuapp.com/booking', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -36,18 +34,15 @@ const BookingModal = ({ date, treatment, setTreatment, refetch }) => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data)
                 if(data.success){
                     toast(`Your Appointment is set, ${formattedDate} at ${slot} `)
                 }
                 else{
                     toast.error(`You already have an  Appointment, ${data.booking?.date} at ${data.booking?.slot} `)
                 }
-                refetch();
-                // to close the modal
                 setTreatment(null)
-            })
-
+                refetch();
+            });
 
     }
 

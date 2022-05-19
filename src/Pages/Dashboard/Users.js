@@ -4,12 +4,12 @@ import Loading from '../Shared/Loading';
 import UserRow from './UserRow';
 
 const Users = () => {
-    const { data: users, isLoading, refetch } = useQuery('users', () => fetch('http://localhost:5000/user',{
+    const { data: users, isLoading, refetch } = useQuery('users', () => fetch('https://desolate-fjord-03129.herokuapp.com/user',{
         method: 'GET',
-        headers: {
+        headers:{
             authorization: `Bearer ${localStorage.getItem('accessToken')}`
         }
-    }).then(res => res.json()))
+    }).then(res => res.json()));
     if (isLoading) {
         return <Loading></Loading>
     }

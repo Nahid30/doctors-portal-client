@@ -1,17 +1,17 @@
 import { signOut } from 'firebase/auth';
 import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
+import { useNavigate } from 'react-router-dom';
 
 const MyAppointments = () => {
     const [appointments, setAppointments] = useState([]);
     const [user] = useAuthState(auth);
-    const navigate = useNavigate();
+    const navigate = useNavigate()
 
-    useEffect(() => {
+    useEffect(() => { 
         if (user) {
-            fetch(`http://localhost:5000/booking?patient=${user.email}`, {
+            fetch(`https://desolate-fjord-03129.herokuapp.com/booking?patient=${user.email}`, {
                 method: 'GET',
                 headers: {
                     'authorization': `Bearer ${localStorage.getItem('accessToken')}`
@@ -25,7 +25,6 @@ const MyAppointments = () => {
                         navigate('/');
 
                     }
-
                     return res.json()
                 })
                 .then(data => {
@@ -33,6 +32,7 @@ const MyAppointments = () => {
                 });
         }
     }, [user])
+    
     return (
         <div className='px-12'>
             <h2 className='text-primary text-bold text-xl mb-4 '>My Appointments : {appointments.length} </h2>
